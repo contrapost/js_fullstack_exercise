@@ -4,8 +4,8 @@
   "description": "test setup fullstack with Node.js",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon —exec babel-node server.js —ignore public/",
-    "dev": "web pack -wd"	
+    "start": "nodemon --exec babel-node server.js --ignore public/",
+    "dev": "web pack -wd"
   },
   "author": "AS",
   "license": "GPL-3.0",
@@ -23,6 +23,7 @@
     "webpack": "^2.2.1"
   },
   "dependencies": {
+    "ejs": "^2.5.5",
     "express": "^4.14.1",
     "mongodb": "^2.2.22",
     "react": "^15.4.2",
