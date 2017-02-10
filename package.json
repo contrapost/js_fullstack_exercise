@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon --exec babel-node server.js --ignore public/",
-    "dev": "web pack -wd"
+    "dev": "webpack -wd"
   },
   "author": "AS",
   "license": "GPL-3.0",
