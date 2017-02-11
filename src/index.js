@@ -3,11 +3,20 @@ import ReactDOM from 'react-dom';
 
 import App from './components/App';
 
+
 ReactDOM.render(
-    <App  />,
+    <App />,
     document.getElementById('root')
 );
 
+
+// To show life cycle methods (componentDidMount and componentWillUnmount)
+/*setTimeout(() => {
+    ReactDOM.render(
+        <h2 className="text-center">Nothing to wait for here!</h2>,
+        document.getElementById('root')
+    );
+}, 4000);*/
 
 // **********************************
 
