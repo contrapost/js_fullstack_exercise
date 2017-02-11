@@ -1,27 +1,27 @@
 import React from 'react';
 import Header from './Header';
 import ContestPreview from './ContestPreview';
-import axios from 'axios';
+// import axios from 'axios';
 // import data from '../testData';
 
 class App extends React.Component{
     state = {
         pageHeader: 'Naming Contests',
-        contests: []
+        contests: this.props.initialContests
     };
 
     //Life cycle
    componentDidMount() {
         // console.log('did mount'); // Can be used to ajax-call or to fire a timer or listeners to events
         // debugger;
-       axios.get('/api/contests')
+       /*axios.get('/api/contests')
            .then(response => {
                this.setState({
                    contests: response.data.contests
                });
            })
            .catch(console.error);
-
+*/
     }
 
     componentWillUnmount() {

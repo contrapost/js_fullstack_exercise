@@ -4,11 +4,11 @@
 
 import React from 'react';
 
-const color = Math.random() > 0.5 ? 'green' : 'red';
+//const color = Math.random() > 0.5 ? 'green' : 'red';
 
 const Header = ({message}) => {
     return (
-        <h2 style={{color}} className="Header text-center">
+        <h2 /*style={{color}}*/ className="Header text-center">
             {message}
         </h2>
     );
