@@ -6,14 +6,14 @@ class Contest extends Component {
         return (
 
             <div className="Contest">
-                {this.props.id}
+                {this.props.description}
             </div>
         );
     }
 }
 
 Contest.propTypes = {
-    id: React.PropTypes.number.isRequired
+    description: React.PropTypes.string.isRequired
 };
 
 export default Contest;

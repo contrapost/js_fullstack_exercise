@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './Header';
 import ContestList from './ContestList';
 import Contest from './Contest';
+import * as api from '../api';
 // import axios from 'axios';
 // import data from '../testData';
 
@@ -10,7 +11,6 @@ const pushState = (obj, url) =>
 
 class App extends React.Component{
     state = {
-        pageHeader: 'Naming Contests',
         contests: this.props.initialContests
     };
 
@@ -39,15 +39,34 @@ class App extends React.Component{
             `/contest/${contestId}`
         );
 
-        this.setState({
-            pageHeader: this.state.contests[contestId].contestName,
-            currentContestId: contestId
-        })
+        api.fetchContest(contestId).then(contest => {
+            this.setState({
+                currentContestId: contest.id,
+                contests: {
+                    ...this.state.contests,
+                    [contest.id]: contest
+                }
+            })
+        });
+
+
     };
+
+   pageHeader() {
+       if(this.state.currentContestId) {
+            return this.currentContest().contestName;
+       }
+
+       return 'Naming Contests';
+   }
+
+   currentContest() {
+       return this.state.contests[this.state.currentContestId];
+   }
 
    currentContent() {
        if(this.state.currentContestId) {
-           return <Contest {...this.state.contests[this.state.currentContestId]} />;
+           return <Contest {...this.currentContest()} />;
        }
 
        return <ContestList
@@ -58,7 +77,7 @@ class App extends React.Component{
     render() {
         return (
             <div className="App">
-                <Header message={this.state.pageHeader} />
+                <Header message={this.pageHeader()} />
                 { this.currentContent()}
             </div>
         );
