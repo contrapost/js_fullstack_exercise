@@ -1,6 +1,3 @@
-.Contest {
-  margin: 1em; }
-
 .ContestPreview {
   margin: 1em;
   border: 1px solid #ccc; }
@@ -14,3 +11,7 @@
 
 .link {
   cursor: pointer; }
+
+.home-link {
+  margin-top: 1em;
+  color: #0000ee; }

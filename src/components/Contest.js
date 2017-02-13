@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 class Contest extends Component {
 
@@ -6,14 +6,20 @@ class Contest extends Component {
         return (
 
             <div className="Contest">
-                {this.props.description}
+                <div className="contest-description">
+                    {this.props.description}
+                </div>
+                <div className="home-link link" onClick={this.props.contestListClick}>
+                    Contest
+                </div>
             </div>
         );
     }
 }
 
 Contest.propTypes = {
-    description: React.PropTypes.string.isRequired
+    description: React.PropTypes.string.isRequired,
+    contestListClick: React.PropTypes.func.isRequired
 };
 
 export default Contest;
