@@ -13,36 +13,36 @@ const onPopState = handler => {
     window.onpopstate = handler;
 };
 
-class App extends React.Component{
+class App extends React.Component {
 
     static propTypes = {
-      initialData: React.PropTypes.object.isRequired
+        initialData: React.PropTypes.object.isRequired
     };
 
     state = this.props.initialData;
 
     //Life cycle
-   componentDidMount() {
-       onPopState((event) => {
-           this.setState({
-               currentContestId: (event.state ||{}).currentContestId
-           })
-       });
+    componentDidMount() {
+        onPopState((event) => {
+            this.setState({
+                currentContestId: (event.state || {}).currentContestId
+            })
+        });
 
         // console.log('did mount'); // Can be used to ajax-call or to fire a timer or listeners to events
         // debugger;
-       /*axios.get('/api/contests')
-           .then(response => {
-               this.setState({
-                   contests: response.data.contests
-               });
-           })
-           .catch(console.error);
-*/
+        /*axios.get('/api/contests')
+         .then(response => {
+         this.setState({
+         contests: response.data.contests
+         });
+         })
+         .catch(console.error);
+         */
     }
 
     componentWillUnmount() {
-       onPopState(null);
+        onPopState(null);
 
         // console.log('will unmount'); // Clean timers or listeners
         // debugger;
@@ -50,7 +50,7 @@ class App extends React.Component{
 
     fetchContest = (contestId) => {
         pushState(
-            { currentContestId: contestId },
+            {currentContestId: contestId},
             `/contest/${contestId}`
         );
 
@@ -69,7 +69,7 @@ class App extends React.Component{
 
     fetchContestList = () => {
         pushState(
-            { currentContestId: null },
+            {currentContestId: null},
             `/`
         );
 
@@ -84,7 +84,7 @@ class App extends React.Component{
     };
 
     fetchNames = (nameIds) => {
-        if(nameIds.length === 0) {
+        if (nameIds.length === 0) {
             return;
         }
 
@@ -96,7 +96,7 @@ class App extends React.Component{
     };
 
     lookupName = (nameId) => {
-        if(!this.state.names || !this.state.names[nameId]) {
+        if (!this.state.names || !this.state.names[nameId]) {
             return {
                 name: '...'
             };
@@ -121,37 +121,37 @@ class App extends React.Component{
             .catch(console.error)
     };
 
-   pageHeader() {
-       if(this.state.currentContestId) {
+    pageHeader() {
+        if (this.state.currentContestId) {
             return this.currentContest().contestName;
-       }
+        }
 
-       return 'Naming Contests';
-   }
+        return 'Naming Contests';
+    }
 
-   currentContest() {
-       return this.state.contests[this.state.currentContestId];
-   }
+    currentContest() {
+        return this.state.contests[this.state.currentContestId];
+    }
 
-   currentContent() {
-       if(this.state.currentContestId) {
-           return <Contest
-               contestListClick={this.fetchContestList}
-               fetchNames={this.fetchNames}
-               lookupName={this.lookupName}
-               addName={this.addName}
-               {...this.currentContest()} />;
-       }
+    currentContent() {
+        if (this.state.currentContestId) {
+            return <Contest
+                contestListClick={this.fetchContestList}
+                fetchNames={this.fetchNames}
+                lookupName={this.lookupName}
+                addName={this.addName}
+                {...this.currentContest()} />;
+        }
 
-       return <ContestList
-           onContestClick={this.fetchContest}
-           contests={this.state.contests} />;
-   }
+        return <ContestList
+            onContestClick={this.fetchContest}
+            contests={this.state.contests}/>;
+    }
 
     render() {
         return (
             <div className="App">
-                <Header message={this.pageHeader()} />
+                <Header message={this.pageHeader()}/>
                 { this.currentContent()}
             </div>
         );

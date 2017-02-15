@@ -7,7 +7,7 @@ import config from './config';
 import axios from 'axios';
 
 const getApiUrl = contestId => {
-    if(contestId) {
+    if (contestId) {
         return `${config.serverUrl}/api/contests/${contestId}`
     }
 
@@ -15,7 +15,7 @@ const getApiUrl = contestId => {
 };
 
 const getInitialData = (contestId, apiData) => {
-    if(contestId) {
+    if (contestId) {
         return {
             currentContestId: apiData._id,
             contests: {
@@ -34,12 +34,12 @@ const serverRender = (contestId) =>
         .then(response => {
             const initialData = getInitialData(contestId, response.data)
             return {
-              initialMarkup: ReactDOMServer.renderToString(
-                  <App initialData={initialData} />
-              ),
-              initialData
+                initialMarkup: ReactDOMServer.renderToString(
+                    <App initialData={initialData}/>
+                ),
+                initialData
             };
-          //  return ReactDOMServer.renderToString(<App initialContests={response.data.contests} />);
+            //  return ReactDOMServer.renderToString(<App initialContests={response.data.contests} />);
         });
 
 

@@ -17,7 +17,7 @@ server.set('view engine', 'ejs');
 
 server.get(['/', '/contest/:contestId'], (req, res) => {
     serverRender(req.params.contestId)
-        .then(({ initialMarkup, initialData }) => {
+        .then(({initialMarkup, initialData}) => {
             res.render('index', {
                 initialMarkup,
                 initialData
@@ -43,9 +43,6 @@ server.use(express.static('public'));
 server.listen(config.port, config.host, () => {
     console.info('Express listening on port', config.port);
 });
-
-
-
 
 
 // ****************** Previous exercises **********************
@@ -101,8 +98,8 @@ server.listen(config.port, config.host, () => {
 
 // Instead of:
 /*
-server.get('/', (req, res) => {
-    res.render('index', {
-        content: '...'
-    });
-});*/
+ server.get('/', (req, res) => {
+ res.render('index', {
+ content: '...'
+ });
+ });*/

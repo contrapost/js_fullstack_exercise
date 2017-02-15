@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, {Component, PropTypes} from 'react';
 
 class Contest extends Component {
     componentDidMount() {
@@ -48,7 +48,7 @@ class Contest extends Component {
                                 <input type="text"
                                        placeholder="New Name Here..."
                                        ref="newNameInput"
-                                       className="form-control" />
+                                       className="form-control"/>
                                 <span className="input-group-btn">
                   <button type="submit" className="btn btn-info">Sumbit</button>
                 </span>
