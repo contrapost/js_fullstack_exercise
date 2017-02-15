@@ -7,6 +7,7 @@ import apiRouter from './api';
 import serverRender from './serverRender';
 import sassMiddleware from 'node-sass-middleware';
 import path from 'path';
+import bodyParser from 'body-parser';
 
 import express from 'express';
 
@@ -22,8 +23,13 @@ server.get(['/', '/contest/:contestId'], (req, res) => {
                 initialData
             });
         })
-        .catch(console.error);
+        .catch(error => {
+            console.error(error);
+            res.status(404).send('Bad request');
+        });
 });
+
+server.use(bodyParser.json());
 
 server.use(sassMiddleware({
     src: path.join(__dirname, 'sass'),
